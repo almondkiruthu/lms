@@ -1,11 +1,11 @@
-import { db } from "@/lib/db";
-import { Attachment, Chapter } from "@prisma/client";
+import { db } from '@/lib/db'
+import { Attachment, Chapter } from '@prisma/client'
 
 interface GetChapterProps {
-  userId: string;
-  courseId: string;
-  chapterId: string;
-};
+  userId: string
+  courseId: string
+  chapterId: string
+}
 
 export const getChapter = async ({
   userId,
@@ -18,9 +18,9 @@ export const getChapter = async ({
         userId_courseId: {
           userId,
           courseId,
-        }
-      }
-    });
+        },
+      },
+    })
 
     const course = await db.course.findUnique({
       where: {
@@ -29,38 +29,38 @@ export const getChapter = async ({
       },
       select: {
         price: true,
-      }
-    });
+      },
+    })
 
     const chapter = await db.chapter.findUnique({
       where: {
         id: chapterId,
         isPublished: true,
-      }
-    });
+      },
+    })
 
     if (!chapter || !course) {
-      throw new Error("Chapter or course not found");
+      throw new Error('Chapter or course not found')
     }
 
-    let muxData = null;
-    let attachments: Attachment[] = [];
-    let nextChapter: Chapter | null = null;
+    let muxData = null
+    let attachments: Attachment[] = []
+    let nextChapter: Chapter | null = null
 
     if (purchase) {
       attachments = await db.attachment.findMany({
         where: {
-          courseId: courseId
-        }
-      });
+          courseId: courseId,
+        },
+      })
     }
 
     if (chapter.isFree || purchase) {
       muxData = await db.muxData.findUnique({
         where: {
           chapterId: chapterId,
-        }
-      });
+        },
+      })
 
       nextChapter = await db.chapter.findFirst({
         where: {
@@ -68,12 +68,12 @@ export const getChapter = async ({
           isPublished: true,
           position: {
             gt: chapter?.position,
-          }
+          },
         },
         orderBy: {
-          position: "asc",
-        }
-      });
+          position: 'asc',
+        },
+      })
     }
 
     const userProgress = await db.userProgress.findUnique({
@@ -81,9 +81,9 @@ export const getChapter = async ({
         userId_chapterId: {
           userId,
           chapterId,
-        }
-      }
-    });
+        },
+      },
+    })
 
     return {
       chapter,
@@ -93,9 +93,9 @@ export const getChapter = async ({
       nextChapter,
       userProgress,
       purchase,
-    };
+    }
   } catch (error) {
-    console.log("[GET_CHAPTER]", error);
+    console.log('[GET_CHAPTER]', error)
     return {
       chapter: null,
       course: null,

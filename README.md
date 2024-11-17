@@ -31,12 +31,14 @@
 git clone https://github.com/almondkiruthu/lms-platform.git
 
 ```
+
 ### Install the packages
 
 ```bash
 npm i
 
 ```
+
 ### Setup.ENV file
 
 ```bash
@@ -63,6 +65,7 @@ NEXT_PUBLIC_TEACHER_ID=
 
 
 ```
+
 ### Setup Prisma
 
 ```bash
@@ -70,6 +73,7 @@ npx prisma generate
 npx prisma db push
 
 ```
+
 ### Start the APP
 
 ```bash
@@ -78,10 +82,8 @@ npm run dev
 
 ### Available Commands
 
-Run commands with npm `npm run [command` 
+Run commands with npm `npm run [command`
 
 | Command | Description                              |
 | ------- | ---------------------------------------- |
 | dev     | Starts a development instance of the app |
-
-
