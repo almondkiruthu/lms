@@ -9,7 +9,7 @@ export default async function Page() {
   return (
     <div>
       <Navbar />
-      <DataTable columns={columns} data={users} />
+      <DataTable columns={columns} data={users} users={users} />
     </div>
   )
 }

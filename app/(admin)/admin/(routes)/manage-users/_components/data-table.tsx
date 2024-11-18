@@ -11,8 +11,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { PlusCircle } from 'lucide-react'
-import Link from 'next/link'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -25,15 +23,19 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { User } from '@prisma/client'
+import UserReportDownloadButton from './user-report-download-button'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  users: User[]
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  users,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -68,12 +70,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <Link href="#">
-          <Button>
-            <PlusCircle className="mr-2 h-4 w-4" />
-            Print users report
-          </Button>
-        </Link>
+        <UserReportDownloadButton users={users} />
       </div>
       <div className="rounded-md border">
         <Table>

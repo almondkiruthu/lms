@@ -108,7 +108,8 @@ export default function Home() {
                 Sign up for an account
               </span>
               <span className="mt-2 text-zinc-700">
-                We&apos;ll process your account and make things ready for you.
+                Create your account in just a few clicks. We&apos;ll set
+                everything up for you so you can get started right away.
               </span>
             </div>
           </li>
@@ -116,10 +117,11 @@ export default function Home() {
             <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
               <span className="text-sm font-medium text-primary">Step 2</span>
               <span className="text-xl font-semibold">
-                Choose the course you want to learn
+                Step 2: Explore and Enroll
               </span>
               <span className="mt-2 text-zinc-700">
-                You&apos;ll enroll for the course
+                Browse through a wide variety of courses. Pick the ones that
+                match your interests and start your learning journey instantly.
               </span>
             </div>
           </li>
@@ -128,8 +130,8 @@ export default function Home() {
               <span className="text-sm font-medium text-primary">Step 3</span>
               <span className="text-xl font-semibold">Start Learning</span>
               <span className="mt-2 text-zinc-700">
-                It&apos;s that simple. Try out AcademEase today - it really
-                takes less than a minute.
+                Dive into your chosen course, track your progress, and achieve
+                your learning goals at your own pace.
               </span>
             </div>
           </li>
