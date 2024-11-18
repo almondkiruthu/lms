@@ -16,7 +16,7 @@ model User {
   lastName  String?
   clerkId   String   @unique
   isTeacher Boolean? @default(false)
-  isAdmin   Boolean  @default(false)
+  isAdmin   Boolean? @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
