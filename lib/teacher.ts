@@ -1,8 +1,16 @@
-export const isTeacher = (userId?: string | null) => {
-  return (
-    userId === process.env.NEXT_PUBLIC_TEACHER_ID ||
-    userId === process.env.NEXT_PUBLIC_TEACHER_ID_2
-  )
-}
+import { db } from './db'
 
-async function validateTeacher(userId?: string | null) {}
+export async function validateTeacher(userId?: string) {
+  const teacher = await db.user.findUnique({
+    where: {
+      clerkId: userId,
+      isTeacher: true,
+    },
+  })
+
+  if (teacher) {
+    return true
+  }
+
+  return false
+}

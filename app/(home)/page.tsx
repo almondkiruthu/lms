@@ -13,15 +13,17 @@ export default function Home() {
       <MaxWidthWrapper className="mb-12 mt-28 flex flex-col items-center justify-center text-center sm:mt-40">
         <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
           <p className="text-sm font-semibold text-gray-700">
-            LMS is now public!
+            AcademEase is now public!
           </p>
         </div>
         <h1 className="font-heading max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-          Join today and <span className="text-sky-500">Learn</span> to upskill.
+          Learn and Teach with <span className="text-sky-500">Ease </span>
+          on AcademEase
         </h1>
         <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
-          Simply join and learn to upskill your skill set today. LMS allows you
-          to upload your courses with and sell to your respective students.
+          Whether you&apos;re a student looking to master new skills or an
+          educator ready to share your expertise, AcademEase makes it effortless
+          to enroll, teach, and succeed.
         </p>
 
         <Link
@@ -88,11 +90,11 @@ export default function Home() {
         <div className="mb-12 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="font-heading mt-2 text-4xl font-bold text-gray-900 sm:text-5xl">
-              Start chatting in minutes
+              Your Gateway to Learning and Teaching
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Chatting to your PDF files has never been easier than with Study
-              Buddy.
+              Explore courses, expand your knowledge, or create and sell your
+              own courses — all in one seamless platform.
             </p>
           </div>
         </div>
@@ -126,8 +128,8 @@ export default function Home() {
               <span className="text-sm font-medium text-primary">Step 3</span>
               <span className="text-xl font-semibold">Start Learning</span>
               <span className="mt-2 text-zinc-700">
-                It&apos;s that simple. Try out LMS today - it really takes less
-                than a minute.
+                It&apos;s that simple. Try out AcademEase today - it really
+                takes less than a minute.
               </span>
             </div>
           </li>

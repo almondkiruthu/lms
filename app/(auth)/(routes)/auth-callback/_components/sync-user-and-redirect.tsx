@@ -1,6 +1,5 @@
 import { db } from '@/lib/db'
 import { currentUser } from '@clerk/nextjs'
-import { Loader2 } from 'lucide-react'
 import { redirect } from 'next/navigation'
 
 const syncNewUser = async () => {
@@ -23,19 +22,13 @@ const syncNewUser = async () => {
     })
   }
 
+  // Redirect after syncing
   redirect('/dashboard')
 }
 
-export default async function page() {
+export default async function SyncUserAndRedirect() {
   await syncNewUser()
 
-  return (
-    <div className="mt-24 flex w-full justify-center">
-      <div className="flex flex-col items-center gap-2">
-        <Loader2 className="h-8 w-8 animate-spin text-zinc-800" />
-        <h3 className="text-xl font-semibold">Setting up your account...</h3>
-        <p>You will be redirected automatically.</p>
-      </div>
-    </div>
-  )
+  // Since this component is async, nothing is rendered
+  return null
 }

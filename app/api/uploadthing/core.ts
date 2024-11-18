@@ -1,13 +1,13 @@
 import { auth } from '@clerk/nextjs'
 import { createUploadthing, type FileRouter } from 'uploadthing/next'
 
-import { isTeacher } from '@/lib/teacher'
+import { validateTeacher } from '@/lib/teacher'
 
 const f = createUploadthing()
 
-const handleAuth = () => {
+const handleAuth = async () => {
   const { userId } = auth()
-  const isAuthorized = isTeacher(userId)
+  const isAuthorized = await validateTeacher(userId as string)
 
   if (!userId || !isAuthorized) throw new Error('Unauthorized')
   return { userId }
