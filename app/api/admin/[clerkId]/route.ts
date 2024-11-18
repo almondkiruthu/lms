@@ -6,7 +6,7 @@ import { auth } from '@clerk/nextjs'
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { clerkId: string } },
+  { params }: { params: { clerkId?: string } },
 ) {
   try {
     const { userId } = auth()

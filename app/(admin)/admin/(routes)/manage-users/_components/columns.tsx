@@ -79,7 +79,7 @@ export const columns: ColumnDef<User>[] = [
       )
     },
     cell: ({ row }) => {
-      const userId = row.original.clerkId
+      const userId = row.original?.clerkId
       return (
         <Badge className={cn('bg-slate-500', userId && 'bg-sky-700')}>
           {userId ? userId : null}
@@ -118,7 +118,7 @@ export const columns: ColumnDef<User>[] = [
             <DialogContent>
               <RoleManagerForm
                 initialData={row.original}
-                clerkId={row.original.clerkId}
+                clerkId={row.original?.clerkId as string}
               />
             </DialogContent>
           </Dialog>

@@ -21,7 +21,7 @@ import axios from 'axios'
 
 interface RoleManagerFormProps {
   initialData: User | null
-  clerkId: string
+  clerkId?: string
 }
 
 const formSchema = z.object({
