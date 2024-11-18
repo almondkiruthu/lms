@@ -23,19 +23,6 @@ const Navbar = async () => {
           <MobileNav userId={userId} isAdmin={isAdmin} />
 
           <div className="hidden items-center space-x-4 sm:flex">
-            {/* {userId && isAdmin === true ? (
-              <>
-                <Link
-                  href="/admin"
-                  className={buttonVariants({
-                    variant: 'default',
-                    size: 'sm',
-                  })}
-                >
-                  Admin
-                </Link>
-              </>
-            ) : null} */}
             {!userId ? (
               <>
                 <Link
@@ -67,9 +54,22 @@ const Navbar = async () => {
                 >
                   Dashboard
                 </Link>
-                <UserButton afterSignOutUrl="/" />
               </>
             )}
+            {isAdmin === true ? (
+              <>
+                <Link
+                  href="/admin"
+                  className={buttonVariants({
+                    variant: 'default',
+                    size: 'sm',
+                  })}
+                >
+                  Admin
+                </Link>
+              </>
+            ) : null}
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </MaxWidthWrapper>
