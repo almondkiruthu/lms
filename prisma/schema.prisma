@@ -14,7 +14,7 @@ model User {
   email     String   @unique
   firstName String?
   lastName  String?
-  clerkId   String?  @unique
+  clerkId   String   @unique
   isTeacher Boolean? @default(false)
   isAdmin   Boolean? @default(false)
   createdAt DateTime @default(now())
