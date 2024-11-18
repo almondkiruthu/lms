@@ -23,7 +23,7 @@ const Navbar = async () => {
           <MobileNav userId={userId} isAdmin={isAdmin} />
 
           <div className="hidden items-center space-x-4 sm:flex">
-            {userId && isAdmin === true ? (
+            {/* {userId && isAdmin === true ? (
               <>
                 <Link
                   href="/admin"
@@ -35,7 +35,7 @@ const Navbar = async () => {
                   Admin
                 </Link>
               </>
-            ) : null}
+            ) : null} */}
             {!userId ? (
               <>
                 <Link
