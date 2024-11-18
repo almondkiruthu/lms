@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { getProgress } from '@/actions/get-progress'
 import { db } from '@/lib/db'
 
+import { validateAdmin } from '@/lib/admin'
 import { validateTeacher } from '@/lib/teacher'
 import { CourseNavbar } from './_components/course-navbar'
 import { CourseSidebar } from './_components/course-sidebar'
@@ -22,6 +23,7 @@ const CourseLayout = async ({
   }
 
   const isTeacher = await validateTeacher(userId as string)
+  const isAdmin = await validateAdmin(userId as string)
 
   const course = await db.course.findUnique({
     where: {
@@ -55,7 +57,12 @@ const CourseLayout = async ({
   return (
     <div className="h-full">
       <div className="fixed inset-y-0 z-50 h-[80px] w-full md:pl-80">
-        <CourseNavbar isTeacher={isTeacher} course={course} progressCount={progressCount} />
+        <CourseNavbar
+          isTeacher={isTeacher}
+          isAdmin={isAdmin}
+          course={course}
+          progressCount={progressCount}
+        />
       </div>
       <div className="fixed inset-y-0 z-50 hidden h-full w-80 flex-col md:flex">
         <CourseSidebar course={course} progressCount={progressCount} />

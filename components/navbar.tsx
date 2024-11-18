@@ -1,13 +1,16 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
+import { validateAdmin } from '@/lib/admin'
 import { auth, UserButton } from '@clerk/nextjs'
 import MaxWidthWrapper from './max-width-wrapper'
 import MobileNav from './mobile-nav'
 import { buttonVariants } from './ui/button'
 
-const Navbar = () => {
+const Navbar = async () => {
   const { userId } = auth()
+
+  const isAdmin = await validateAdmin(userId as string)
 
   return (
     <nav className="sticky inset-x-0 top-0 z-30 h-14 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
@@ -17,9 +20,22 @@ const Navbar = () => {
             <span>AcademEase</span>
           </Link>
 
-          <MobileNav userId={userId} />
+          <MobileNav userId={userId} isAdmin={isAdmin} />
 
           <div className="hidden items-center space-x-4 sm:flex">
+            {userId && isAdmin === true ? (
+              <>
+                <Link
+                  href="/admin"
+                  className={buttonVariants({
+                    variant: 'default',
+                    size: 'sm',
+                  })}
+                >
+                  Admin
+                </Link>
+              </>
+            ) : null}
             {!userId ? (
               <>
                 <Link

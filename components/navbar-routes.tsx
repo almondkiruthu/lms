@@ -9,7 +9,13 @@ import { Button } from '@/components/ui/button'
 
 import { SearchInput } from './search-input'
 
-export const NavbarRoutes = ({ isTeacher }: { isTeacher?: boolean }) => {
+export const NavbarRoutes = ({
+  isTeacher,
+  isAdmin,
+}: {
+  isTeacher?: boolean
+  isAdmin?: boolean
+}) => {
   const pathname = usePathname()
 
   const isTeacherPage = pathname?.startsWith('/dashboard/teacher')
@@ -24,20 +30,29 @@ export const NavbarRoutes = ({ isTeacher }: { isTeacher?: boolean }) => {
         </div>
       )}
       <div className="ml-auto flex gap-x-2">
-        {isTeacherPage || isCoursePage ? (
-          <Link href="/dashboard">
-            <Button size="sm" variant="ghost">
-              <LogOut className="mr-2 h-4 w-4" />
-              Exit
-            </Button>
-          </Link>
-        ) : isTeacher === true ? (
+        {isTeacherPage ||
+          (isCoursePage && (
+            <Link href="/dashboard">
+              <Button size="sm" variant="ghost">
+                <LogOut className="mr-2 h-4 w-4" />
+                Exit
+              </Button>
+            </Link>
+          ))}
+        {isTeacher === true && (
           <Link href="/dashboard/teacher/courses">
             <Button size="sm" variant="ghost">
               Teacher mode
             </Button>
           </Link>
-        ) : null}
+        )}
+        {isAdmin === true && (
+          <Link href="/admin">
+            <Button size="sm" variant="ghost">
+              Admin
+            </Button>
+          </Link>
+        )}
         <UserButton afterSignOutUrl="/" />
       </div>
     </>

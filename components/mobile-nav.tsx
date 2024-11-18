@@ -5,8 +5,15 @@ import { ArrowRight, Menu } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { buttonVariants } from './ui/button'
 
-const MobileNav = ({ userId }: { userId?: string | null | undefined }) => {
+const MobileNav = ({
+  userId,
+  isAdmin,
+}: {
+  userId?: string | null | undefined
+  isAdmin?: boolean
+}) => {
   const [isOpen, setOpen] = useState<boolean>(false)
 
   const toggleOpen = () => setOpen((prev) => !prev)
@@ -34,12 +41,25 @@ const MobileNav = ({ userId }: { userId?: string | null | undefined }) => {
       {isOpen ? (
         <div className="fixed inset-0 z-0 w-full animate-in fade-in-20 slide-in-from-top-5">
           <ul className="absolute grid w-full gap-3 border-b border-zinc-200 bg-white px-10 pb-8 pt-20 shadow-xl">
+            {userId && isAdmin === true ? (
+              <>
+                <Link
+                  href="/admin"
+                  className={buttonVariants({
+                    variant: 'default',
+                    size: 'sm',
+                  })}
+                >
+                  Admin
+                </Link>
+              </>
+            ) : null}
             {!userId ? (
               <>
                 <li>
                   <Link
                     onClick={() => closeOnCurrent('/sign-up')}
-                    className="flex w-full items-center font-semibold text-green-600"
+                    className="flex w-full items-center font-semibold text-sky-700"
                     href="/sign-up"
                   >
                     Get started
